@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Beta Karttakuva</string>
+    <string name="action_location">location</string>
+    <string name="action_settings">settings</string>
+    <string name="user_location_permission_explanation">allow location?</string>
+    <string name="user_location_permission_not_granted">location not available</string>
+    <string name="search">search</string>
+    <string name="search_title">search</string>
+    <string name="search_hint">search place by name</string>
+</resources>

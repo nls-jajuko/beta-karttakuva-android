@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mb_accesstoken">pk.eyJ1IjoiamFuc2t1IiwiYSI6ImNqMzJvNXRibzAwMDcyeG9jaHhwMnc2d2YifQ.mN0O1o-WgG6wvb9B06ChXw</string>
+    <string name="bk_geocoding">https://beta-paikkatieto.maanmittauslaitos.fi/geocoding/v1/pelias/search?lang=fin&amp;crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F4326&amp;size=30&amp;text=</string>
+
+    <string name="style_hobby">hobby</string>
+    <string name="style_next">v21 map</string>
+    <string name="style_current">v20 map</string>
+
+    <string name="bk_defaultStyleUrl">https://raw.githubusercontent.com/nls-jajuko/beta-karttakuva.maanmittauslaitos.fi/master/vectortiles/hobby/hobby-3857.json</string>
+    <string name="bk_nextStyleUrl">https://beta-karttakuva.maanmittauslaitos.fi/vectortiles/v21/taustakartta-3857.json</string>
+    <string name="bk_currentStyleUrl">https://beta-karttakuva.maanmittauslaitos.fi/vectortiles/v20/taustakartta-3857.json</string>
+
+
+</resources>
