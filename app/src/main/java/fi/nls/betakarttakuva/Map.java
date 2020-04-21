@@ -29,6 +29,10 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.mapboxsdk.style.layers.HillshadeLayer;
+import com.mapbox.mapboxsdk.style.sources.RasterDemSource;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.hillshadeHighlightColor;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.hillshadeShadowColor;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,6 +62,13 @@ public class Map extends AppCompatActivity implements
     private LocationComponent locationComponent;
     private boolean hasLocation = false;
     private boolean isLocationEnabled = false;
+
+
+    private static final String LAYER_ID = "hillshade-layer";
+    private static final String SOURCE_ID = "hillshade-source";
+    private static final String SOURCE_URL = "mapbox://mapbox.terrain-rgb";
+    private static final String HILLSHADE_HIGHLIGHT_COLOR = "#008924";
+
 
 
     @SuppressWarnings({"MissingPermission"})
@@ -158,25 +169,7 @@ public class Map extends AppCompatActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_location:
-                if (hasLocation) {
-
-                    locationComponent.setCameraMode(CameraMode.TRACKING);
-                    locationComponent.setLocationComponentEnabled(true);
-
-                    Location loc = locationComponent.getLastKnownLocation();
-
-                    CameraPosition position = new CameraPosition.Builder()
-                            .target(new LatLng(loc.getLatitude(), loc.getLongitude())) // Sets the new camera position
-                            .zoom(14) // Sets the zoom
-                            .build(); // Creates a CameraPosition from the builder
-
-                    mapboxMap.animateCamera(CameraUpdateFactory
-                            .newCameraPosition(position), 1500);
-                } else {
-                    enableLocationComponent(
-                            mapboxMap.getStyle(), CameraMode.TRACKING);
-                }
-
+                handleLocation();
                 return true;
             case R.id.action_style_hobby:
                 changeStyle(styleUrls.get("hobby"));
@@ -186,20 +179,39 @@ public class Map extends AppCompatActivity implements
                 changeStyle(styleUrls.get("next"));
                 return true;
 
-
             case R.id.action_style_current:
                 changeStyle(styleUrls.get("current"));
                 return true;
 
-
             case R.id.action_settings:
-
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    protected void handleLocation() {
+        if (hasLocation) {
+
+            locationComponent.setCameraMode(CameraMode.TRACKING);
+            locationComponent.setLocationComponentEnabled(true);
+
+            Location loc = locationComponent.getLastKnownLocation();
+
+            CameraPosition position = new CameraPosition.Builder()
+                    .target(new LatLng(loc.getLatitude(), loc.getLongitude())) // Sets the new camera position
+                    .zoom(14) // Sets the zoom
+                    .build(); // Creates a CameraPosition from the builder
+
+            mapboxMap.animateCamera(CameraUpdateFactory
+                    .newCameraPosition(position), 1500);
+        } else {
+            enableLocationComponent(
+                    mapboxMap.getStyle(), CameraMode.TRACKING);
+        }
+
     }
 
     @Override
@@ -260,11 +272,11 @@ public class Map extends AppCompatActivity implements
 
         mapboxMap.setStyle(
                 styleUrl,
-
                 new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
                         enableLocationComponent(style, CameraMode.TRACKING);
+
                     }
                 });
     }
@@ -277,28 +289,29 @@ public class Map extends AppCompatActivity implements
 
     private void handleIntent(Intent intent) {
 
-        if (FLYTO.equals(intent.getAction())) {
-            String json = intent.getStringExtra(FLYTO);
-            //use the query to search your data somehow
-
-            try {
-                JSONObject loc = new JSONObject(json);
-                JSONArray posArr = loc.getJSONArray("coordinates");
-
-                locationComponent.setLocationComponentEnabled(false);
-                CameraPosition position = new CameraPosition.Builder()
-                        .target(new LatLng(posArr.getDouble(1), posArr.getDouble(0))) // Sets the new camera position
-                        .zoom(14) // Sets the zoom
-                        .build(); // Creates a CameraPosition from the builder
-
-                mapboxMap.moveCamera(CameraUpdateFactory
-                        .newCameraPosition(position));
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
+        if (!FLYTO.equals(intent.getAction())) {
+            return;
         }
+
+        final String json = intent.getStringExtra(FLYTO);
+
+        try {
+            JSONObject loc = new JSONObject(json);
+            JSONArray posArr = loc.getJSONArray("coordinates");
+
+            locationComponent.setLocationComponentEnabled(false);
+            CameraPosition position = new CameraPosition.Builder()
+                    .target(new LatLng(posArr.getDouble(1), posArr.getDouble(0))) // Sets the new camera position
+                    .zoom(14) // Sets the zoom
+                    .build(); // Creates a CameraPosition from the builder
+
+            mapboxMap.moveCamera(CameraUpdateFactory
+                    .newCameraPosition(position));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
