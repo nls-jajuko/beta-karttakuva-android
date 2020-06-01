@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    ndkVersion "21.1.6352462"
     compileSdkVersion 28
     defaultConfig {
         applicationId "fi.nls.betakarttakuva"
