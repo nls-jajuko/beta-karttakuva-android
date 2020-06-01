@@ -1,5 +1,6 @@
 package fi.nls.betakarttakuva;
 
+import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -198,7 +199,7 @@ public class Map extends AppCompatActivity implements
             locationComponent.setCameraMode(CameraMode.TRACKING);
             locationComponent.setLocationComponentEnabled(true);
 
-            Location loc = locationComponent.getLastKnownLocation();
+            @SuppressLint("MissingPermission") Location loc = locationComponent.getLastKnownLocation();
 
             CameraPosition position = new CameraPosition.Builder()
                     .target(new LatLng(loc.getLatitude(), loc.getLongitude())) // Sets the new camera position
