@@ -3,13 +3,13 @@
     <string name="mb_accesstoken">pk.eyJ1IjoiamFuc2t1IiwiYSI6ImNqMzJvNXRibzAwMDcyeG9jaHhwMnc2d2YifQ.mN0O1o-WgG6wvb9B06ChXw</string>
     <string name="bk_geocoding">https://avoin-paikkatieto.maanmittauslaitos.fi/geocoding/v1/pelias/search?api-key=7cd2ddae-9f2e-481c-99d0-404e7bc7a0b2&amp;lang=fin&amp;crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F4326&amp;size=30&amp;text=</string>
 
-    <string name="style_hobby">hobby</string>
-    <string name="style_next">v21 map</string>
-    <string name="style_current">v20 map</string>
+    <string name="style_hobby">v20 (avoin-karttakuva)</string>
+    <string name="style_next">v21 (avoin-karttakuva)</string>
+    <string name="style_current">v20 (beta-karttakuva)</string>
 
-    <string name="bk_defaultStyleUrl">https://raw.githubusercontent.com/nls-jajuko/beta-karttakuva.maanmittauslaitos.fi/master/vectortiles/hobby/hobby-3857.json</string>
-    <string name="bk_nextStyleUrl">https://beta-karttakuva.maanmittauslaitos.fi/vectortiles/v21/taustakartta-3857.json</string>
-    <string name="bk_currentStyleUrl">https://beta-karttakuva.maanmittauslaitos.fi/vectortiles/v20/taustakartta-3857.json</string>
+    <string name="bk_defaultStyleUrl">https://avoin-karttakuva.maanmittauslaitos.fi/vectortiles/stylejson/v20/hobby.json?TileMatrixSet=WGS84_Pseudo-Mercator&amp;api-key=7cd2ddae-9f2e-481c-99d0-404e7bc7a0b2</string>
+    <string name="bk_nextStyleUrl">https://avoin-karttakuva.maanmittauslaitos.fi/vectortiles/stylejson/v21/hobby.json?TileMatrixSet=WGS84_Pseudo-Mercator&amp;api-key=7cd2ddae-9f2e-481c-99d0-404e7bc7a0b2</string>
+    <string name="bk_currentStyleUrl">https://raw.githubusercontent.com/nls-jajuko/beta-karttakuva.maanmittauslaitos.fi/master/vectortiles/hobby/hobby-3857.json</string>
 
 
 </resources>
