@@ -15,8 +15,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.nio.charset.StandardCharsets.*;
 
 
 public class SearchResults extends ListActivity {
@@ -89,7 +94,12 @@ public class SearchResults extends ListActivity {
 
         clearTitles();
 
-        final String url = geocoding + text;
+        final String url;
+        try {
+            url = geocoding + URLEncoder.encode(text, UTF_8.toString());
+        } catch (UnsupportedEncodingException e) {
+           return;
+        }
 
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null,
