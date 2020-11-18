@@ -80,7 +80,6 @@ public class Map extends AppCompatActivity implements
     private boolean isLocationEnabled = false;
     private boolean isTracking = false;
     private List<Feature> listOfFeatures = new ArrayList<>();
-    private FeatureCollection pointsCollection = FeatureCollection.fromFeatures(listOfFeatures);
 
     @SuppressWarnings({"MissingPermission"})
     private void enableLocationComponent(@NonNull Style loadedMapStyle, int mode) {
@@ -224,7 +223,7 @@ public class Map extends AppCompatActivity implements
             locationComponent.setCameraMode(CameraMode.TRACKING_GPS_NORTH);
             locationComponent.setLocationComponentEnabled(true);
 // Set the component's render mode
-            locationComponent.setRenderMode(RenderMode.COMPASS);
+            locationComponent.setRenderMode(RenderMode.GPS);
             locationEngine = LocationEngineProvider.getBestLocationEngine(this);
 
             LocationEngineRequest request;
@@ -248,6 +247,8 @@ public class Map extends AppCompatActivity implements
 
         } else {
             isTracking = false;
+            locationComponent.setCameraMode(CameraMode.TRACKING);
+            locationComponent.setRenderMode(RenderMode.NORMAL);
             locationEngine.removeLocationUpdates(callback);
             Log.d(TAG, "Removed Tracking");
         }
@@ -406,10 +407,13 @@ public class Map extends AppCompatActivity implements
         JsonObject props = new JsonObject();
         Point geom = Point.fromLngLat(lon, lat);
         Feature feat = Feature.fromGeometry(geom, props);
+        Log.d("FEATURE", feat.toJson());
         listOfFeatures.add(feat);
+
+        FeatureCollection pointsCollection = FeatureCollection.fromFeatures(listOfFeatures);
+
         points.setGeoJson(pointsCollection);
 
-        Log.d("FEATURE", feat.toJson());
         Log.d("FEATURECOLL.length",
                 Integer.toString(pointsCollection.features().size()));
         Log.d("LISTOFFEATS.length",
