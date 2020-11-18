@@ -5,33 +5,40 @@
     tools:context=".Map">
 
 
-
     <item
         android:id="@+id/action_location"
-        android:icon="@drawable/ic_pin_drop_black_24dp"
+        android:icon="@drawable/ic_place_black_24dp"
         android:title="@string/action_location"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_tracker"
+        android:icon="@drawable/ic_pin_drop_black_24dp"
+        android:title="@string/action_tracker"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menu_search"
         android:title="@string/search"
         android:icon="@drawable/ic_search_black_24dp"
         app:showAsAction="collapseActionView|ifRoom"
-        app:actionViewClass="android.support.v7.widget.SearchView"
-      />
+        app:actionViewClass="android.support.v7.widget.SearchView" />
 
-    <item android:id="@+id/action_style_hobby"
+    <item
+        android:id="@+id/action_style_hobby"
         android:title="@string/style_hobby"
-        app:showAsAction="never"/>
-    <item android:id="@+id/action_style_next"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_style_next"
         android:title="@string/style_next"
-        app:showAsAction="never"/>
-    <item android:id="@+id/action_style_current"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_style_current"
         android:title="@string/style_current"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
-    <item android:id="@+id/action_settings"
+    <item
+        android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
 </menu>

@@ -17,11 +17,10 @@ import com.android.volley.toolbox.Volley;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.nio.charset.StandardCharsets.*;
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 
 public class SearchResults extends ListActivity {
@@ -41,7 +40,7 @@ public class SearchResults extends ListActivity {
         geocoding = getString(R.string.bk_geocoding);
         queue = Volley.newRequestQueue(this);
 
-        adapter = new ArrayAdapter<String>(this,
+        adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, titles);
         responseListener = new GeocodingResponseListener(adapter, titles, points);
 
@@ -53,7 +52,7 @@ public class SearchResults extends ListActivity {
         String item = (String) getListAdapter().getItem(position);
         double[] posArr = points.get(position);
 
-        if( posArr == null) {
+        if (posArr == null) {
             return;
         }
 
@@ -98,7 +97,7 @@ public class SearchResults extends ListActivity {
         try {
             url = geocoding + URLEncoder.encode(text, UTF_8.toString());
         } catch (UnsupportedEncodingException e) {
-           return;
+            return;
         }
 
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
