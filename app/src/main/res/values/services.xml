@@ -7,9 +7,13 @@
     <string name="style_next">v21 (avoin-karttakuva)</string>
     <string name="style_current">v20 (beta-karttakuva)</string>
 
-    <string name="bk_defaultStyleUrl">https://avoin-karttakuva.maanmittauslaitos.fi/vectortiles/stylejson/v20/hobby.json?TileMatrixSet=WGS84_Pseudo-Mercator&amp;api-key=7cd2ddae-9f2e-481c-99d0-404e7bc7a0b2</string>
+    <!--string name="bk_defaultStyleUrl">https://avoin-karttakuva.maanmittauslaitos.fi/vectortiles/stylejson/v20/hobby.json?TileMatrixSet=WGS84_Pseudo-Mercator&amp;api-key=7cd2ddae-9f2e-481c-99d0-404e7bc7a0b2</string>
     <string name="bk_nextStyleUrl">https://avoin-karttakuva.maanmittauslaitos.fi/vectortiles/stylejson/v21/hobby.json?TileMatrixSet=WGS84_Pseudo-Mercator&amp;api-key=7cd2ddae-9f2e-481c-99d0-404e7bc7a0b2</string>
-    <string name="bk_currentStyleUrl">https://raw.githubusercontent.com/nls-jajuko/beta-karttakuva.maanmittauslaitos.fi/master/vectortiles/hobby/hobby-3857.json</string>
+    <string name="bk_currentStyleUrl">https://raw.githubusercontent.com/nls-jajuko/beta-karttakuva.maanmittauslaitos.fi/master/vectortiles/hobby/hobby-3857.json</string-->
+
+    <string name="bk_defaultStyleUrl">https://beta-karttakuva.maanmittauslaitos.fi/vectortiles/v20/hobby-3857.json</string>
+    <string name="bk_nextStyleUrl">https://beta-karttakuva.maanmittauslaitos.fi/vectortiles/v20/taustakartta-3857.json</string>
+    <string name="bk_currentStyleUrl">https://beta-karttakuva.maanmittauslaitos.fi/vectortiles/v20/hobby-3857.json</string>
 
 
 </resources>
